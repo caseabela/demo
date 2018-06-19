@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf Hello World Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/resources/css/main.css}"
+	href="../resources/css/main.css" />
+
+</head>
+<body>
+
+	<div th:include="header :: navigation"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+				<div class="starter-template">
+					<h1>Spring Boot Web Thymeleaf</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
+				th:each="subject : ${allSubjects}">
+
+				<a href="#" th:href="@{/subject-info/{id}(id=${subject.id})}"
+					th:text="${subject.title}"></a>
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<a href="#" th:href="@{/create-subject}" class="btn btn-primary"><i
+					class="glyphicon glyphicon-plus"></i>&nbsp;Add Subject</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+	<!--  load jquery -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous"></script>
+	<!--  end load jquery -->
+	<script type="text/javascript"
+		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+h1 {
+	color: #0000FF;
+}
+
+h2 {
+	color: #FF0000;
+}
+
+.clearfix {
+	margin: 15px 0;
+}
+
+textarea {
+	resize: vertical;
+}
+
+a {
+	color: red;
+	margin: 0 5px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.error {
+	color: red;
+}

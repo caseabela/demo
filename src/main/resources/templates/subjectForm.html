@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Boot Thymeleaf Hello World Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="../webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/resources/css/main.css}"
+	href="../resources/css/main.css" />
+
+</head>
+<body>
+	<div th:include="header :: navigation"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+				<div class="starter-template">
+					<h1>Spring Boot Web Thymeleaf</h1>
+				</div>
+			</div>
+		</div>
+		<h3>Subject</h3>
+		<form action="#" th:action="@{/create-subject}" th:object="${subject}"
+			method="post">
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="col-lg-6">
+						<div class="col-lg-2 col-md-2">
+							<label for="title" th:field="#{subject.title}"></label>
+						</div>
+						<div class="col-lg-7 col-md-7">
+							<input type="text" class="form-control" name="title" id="title"
+								th:field="*{title}" />
+						</div>
+						<div class="col-lg-3 col-md-3"></div>
+					</div>
+					<div class="col-lg-6"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<div class="col-lg-6">
+						<div class="col-lg-2 col-md-2">
+							<label for="title" th:field="#{subject.description}"></label>
+						</div>
+						<div class="col-lg-7 col-md-7">
+							<textarea class="form-control" th:field="*{description}"></textarea>
+						</div>
+						<div class="col-lg-3 col-md-3"></div>
+					</div>
+					<div class="col-lg-6"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12 col-md-12">
+					<table class="table table-responsive table-bordered table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Title</th>
+								<th>Description</th>
+								<th>Price</th>
+								<th><button type="submit" name="addBook" id="addRow"
+										class="btn btn-primary btn-sm">
+										<i class="glyphicon glyphicon-plus"></i>&nbsp;Add Book
+									</button></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="book,rowStat : *{books}">
+								<td th:text="${rowStat.count}">1</td>
+								<td><input type="text"
+									th:field="*{books[__${rowStat.index}__].title}"
+									class="form-control" /></td>
+								<td><input type="text"
+									th:field="*{books[__${rowStat.index}__].description}"
+									class="form-control" /></td>
+
+								<td><input type="text"
+									th:field="*{books[__${rowStat.index}__].price}"
+									class="form-control" /></td>
+								<td>
+									<button type="submit" name="removeBook"
+										th:value="${rowStat.index}" id="removeBook"
+										class="btn btn-danger btn-sm">
+										<i class="glyphicon glyphicon-remove"></i>&nbsp;Remove
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+
+					<input type="submit" class="btn btn-primary" value="Submit" /> <a
+						href="#" class="btn btn-primary" th:href="@{/}">Cancel</a>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<!-- /.container -->
+
+	<!--  load jquery -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<!--  end load jquery -->
+	<script type="text/javascript"
+		src="../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
