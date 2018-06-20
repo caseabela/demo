@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -54,8 +55,7 @@ public class Book implements Serializable {
 	@CreationTimestamp
 	private Timestamp createdAt;
 
-	@Column(name = "updated_at")
-	@UpdateTimestamp
+	@Transient
 	private Timestamp updatedAt;
 
 	/**
