@@ -73,7 +73,7 @@ public class WelcomeController {
 
 				model.addAttribute("books", subject.getBooks());
 
-				return new ModelAndView("/subjectForm", "subject", subject);
+				return new ModelAndView("subjectForm", "subject", subject);
 
 			}
 			if (subject.getId() > 0) {
