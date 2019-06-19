@@ -84,7 +84,7 @@ public class WelcomeController {
 
 			}
 			subjectService.addSubject(subject);
-			return new ModelAndView("redirect:/", "allSubjects", subjectService.getAllSubjects());
+			return new ModelAndView("redirect:", "allSubjects", subjectService.getAllSubjects());
 		}
 
 		return new ModelAndView("subjectForm", "subject", subject);
@@ -120,7 +120,7 @@ public class WelcomeController {
 
 		subjectService.deleteSubject(id);
 
-		return new ModelAndView("/", "allSubjects", subjectService.getAllSubjects());
+		return new ModelAndView("", "allSubjects", subjectService.getAllSubjects());
 	}
 
 	/*
